@@ -2,23 +2,23 @@
 lock '3.4.0'
 
 # require Slack config
-require './config/slack'
+# require './config/slack'
 
 ############################################
 # Setup WordPress
 ############################################
 
-set :wp_user, "yourname" # The admin username
-set :wp_email, "yourname@example.com" # The admin email address
-set :wp_sitename, "WP Deploy" # The site title
-set :wp_localurl, "http://wpdeploy" # Your local environment URL
+set :wp_user, "flcoop_press" # The admin username
+set :wp_email, "nicola.spesivcev@gmail.com" # The admin email address
+set :wp_sitename, "FLCOOP.PRESS" # The site title
+set :wp_localurl, "http://flcoop.press.dev" # Your local environment URL
 
 ############################################
 # Setup project
 ############################################
 
-set :application, "wp-deploy"
-set :repo_url, "git@github.com:Mixd/wp-deploy.git"
+set :application, "flcoop-press"
+set :repo_url, "git@github.com:eehah5ru/flcoop-press-website.git"
 set :scm, :git
 
 set :git_strategy, SubmoduleStrategy
@@ -57,15 +57,15 @@ namespace :deploy do
 
   desc "Creates robots.txt for non-production envs"
   task :create_robots do
-  	on roles(:app) do
-  		if fetch(:stage) != :production then
+    on roles(:app) do
+      if fetch(:stage) != :production then
 
-		    io = StringIO.new('User-agent: *
+        io = StringIO.new('User-agent: *
 Disallow: /')
-		    upload! io, File.join(release_path, "robots.txt")
+        upload! io, File.join(release_path, "robots.txt")
         execute :chmod, "644 #{release_path}/robots.txt"
       end
-  	end
+    end
   end
 
   after :finished, :create_robots
