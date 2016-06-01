@@ -3,6 +3,8 @@ require 'capistrano/setup'
 
 # Includes default deployment tasks
 require 'capistrano/deploy'
+# require 'capistrano/ext/multistage'
+require 'capistrano/shell'
 
 # Include custom strategy for deploying git submodules
 require 'capistrano/git'
@@ -12,7 +14,7 @@ require './lib/capistrano/submodule_strategy'
 require 'yaml'
 
 # Includes Slack integration gem
-require 'capistrano/slackify'
+# require 'capistrano/slackify'
 
 # Loads custom tasks from `lib/capistrano/tasks' if you have any defined.
 Dir.glob('lib/capistrano/tasks/*.cap').each { |r| import r }

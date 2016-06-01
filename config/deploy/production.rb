@@ -4,7 +4,7 @@
 
 set :stage, :production
 set :stage_url, "http://flcoop.press"
-server "calcium.locum.ru", user: "soobscha_hosting", roles: %w{web app db}
+server "calcium.locum.ru", user: "hosting_soobscha", roles: %w{web app db}
 set :deploy_to, "/home/hosting_soobscha/projects/flcoop-press"
 
 ############################################

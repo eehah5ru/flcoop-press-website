@@ -29,9 +29,18 @@ set :git_strategy, SubmoduleStrategy
 
 set :log_level, :info
 set :use_sudo, false
+set :pty, true
 
 set :ssh_options, {
   forward_agent: true
+}
+
+set :default_env, {
+      'PATH' => "$HOME/bin/:$PATH"
+    }
+
+set :default_run_options, {
+  :shell => '/bin/zsh'
 }
 
 set :keep_releases, 5
@@ -65,6 +74,13 @@ Disallow: /')
         upload! io, File.join(release_path, "robots.txt")
         execute :chmod, "644 #{release_path}/robots.txt"
       end
+    end
+  end
+
+  desc "check PATH on remote server"
+  task :print_path do
+    on roles(:app) do
+      puts capture(:echo, "$PATH")
     end
   end
 
