@@ -2,3 +2,6 @@
 	path = wordpress
 	url = https://github.com/WordPress/WordPress.git
 	branch = 4.2-branch
+[submodule "content/plugins/wp-rss-multi-importer"]
+	path = content/plugins/wp-rss-multi-importer
+	url = https://github.com/wp-plugins/wp-rss-multi-importer.git
