@@ -3,8 +3,8 @@
 ############################################
 
 set :stage, :staging
-set :stage_url, "http://www.example.com"
-server "XXX.XXX.XX.XXX", user: "SSHUSER", roles: %w{web app db}
+set :stage_url, "http://flcoop.press"
+server "calcium.locum.ru", user: "hosting_soobscha", roles: %w{web app db}
 set :deploy_to, "/deploy/to/path"
 
 ############################################
